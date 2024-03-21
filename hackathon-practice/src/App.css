@@ -1,0 +1,22 @@
+*{
+  margin: 0;
+}
+.container{
+  display: flex;
+}
+.client{
+  width: 50%;
+  height: 100vh;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.server{
+  width: 50%;
+  height: 100vh;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
