@@ -1,0 +1,29 @@
+.card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .card-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color:lightblue
+  }
+  
+  .card-body {
+    padding: 20px;
+    display: flex;
+
+  }
+  
+  .card-body p {
+    margin: 0;
+  }
+  
+  .card-body p strong {
+    margin-right: 5px;
+  }
+  
