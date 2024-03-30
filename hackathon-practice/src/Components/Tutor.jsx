@@ -1,12 +1,9 @@
+import React from 'react'
 import { useState } from 'react';
-import './App.css'
-import axios from 'axios'
-import { useEffect } from 'react';
-import Register from './Components/Register';
-function App() {
-  const [tutors, setTutors] = useState([]);
 
-
+const Tutor = () => {
+    const [tutors, setTutors] = useState([]);
+    
   useEffect(() => {
     axios.get("/api/tutor").then((res) => {
       setTutors(res.data)
@@ -15,10 +12,8 @@ function App() {
     })
   
   },[])
-
   return (
     <>
-      <Register/>
       <h1>{tutors.length}</h1>
       {tutors.map((tutor) => {
         return (
@@ -28,9 +23,9 @@ function App() {
           </div>
         )
       })}
-
+      
     </>
   )
 }
 
-export default App
+export default Tutor
