@@ -1,17 +1,27 @@
+import { useState } from 'react';
 import './App.css'
+import axios from 'axios'
 
 function App() {
+  const [tutors,setTutors] = useState([]);
+
+  const response = axios.get("http://localhost:5000/api/tutor",).then((res)=>{
+    console.log(res);
+  }).catch((err)=>{
+    console.log(err);
+  })
 
   return (
     <>
-      <div className="container">
-        <div className="client">
-          <h1>client</h1>
-        </div>
-        <div className="server">
-          <h1>server</h1>
-        </div>
-      </div>
+      <h1>{tutors.length}</h1>
+      {tutors.map((tutor)=>{
+        return(
+          <div key={tutor.id}>
+            <h1>{tutor.name}</h1>
+            <h2>{tutor.subTaught}</h2>
+          </div>
+        )
+      })}
     </>
   )
 }
