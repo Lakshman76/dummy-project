@@ -1,16 +1,19 @@
 import './App.css'
-import SplitPane from 'react-split-pane';
 
 function App() {
 
   return (
     <>
-    <div className={styles.splitScreen}>
-  <div className={styles.topPane}>topPane</div>
-  <div className={styles.bottomPane}>bottomPane</div>
-</div>
+      <div className="container">
+        <div className="client">
+          <h1>client</h1>
+        </div>
+        <div className="server">
+          <h1>server</h1>
+        </div>
+      </div>
     </>
-  );
+  )
 }
 
 export default App
