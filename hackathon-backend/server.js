@@ -6,12 +6,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/tutor", (req, res) => {
-  const tutor = [
-    {
-      id: 1,
-      name: "user1",
-      subTaught: "math"
-    },
+  const tutors = [
     {
       id: 1,
       name: "user1",
@@ -19,20 +14,26 @@ app.use("/api/tutor", (req, res) => {
     },
     {
       id: 2,
-      name: "user2",
+      name: "user1",
       subTaught: "math"
     },
     {
       id: 3,
-      name: "user3",
+      name: "user2",
       subTaught: "math"
     },
     {
       id: 4,
+      name: "user3",
+      subTaught: "math"
+    },
+    {
+      id: 5,
       name: "user4",
       subTaught: "math"
     }
   ]
+  res.send(tutors);
 })
 
 const PORT = process.env.PORT | 5000;
