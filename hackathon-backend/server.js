@@ -23,7 +23,7 @@ app.use("/api/tutor", (req, res) => {
     {
       id: 3,
       name: "user2",
-      subTaught: "math"
+      subTaught: "Chemistry"
     },
     {
       id: 4,
@@ -49,6 +49,16 @@ app.use("/api/tutor", (req, res) => {
       id: 8,
       name: "user4",
       subTaught: "math"
+    },
+    {
+      id: 9,
+      name: "user4",
+      subTaught: "English"
+    },
+    {
+      id: 10,
+      name: "user4",
+      subTaught: "Physics"
     },
   ]
   res.send(tutors);
