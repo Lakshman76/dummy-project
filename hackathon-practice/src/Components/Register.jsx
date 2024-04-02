@@ -1,81 +1,92 @@
-import React from "react";
-import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBRadio, // Import MDBRadio
-} from "mdb-react-ui-kit";
-import "./Register.css";
+import React, { useState } from 'react';
+import { Container, Grid, Card, CardContent, Typography, TextField, Radio, RadioGroup, FormControlLabel, Button } from '@mui/material';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+const Register = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    birthday: '',
+    gender: '',
+  });
 
-function Register() {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/register', formData);
+      console.log(response.data); // Handle success response from the server
+      navigate("/tutors");
+    } catch (error) {
+      console.error('Error:', error.response.data); // Handle error response from the server
+    }
+  };
+
   return (
-    <MDBContainer fluid>
-      <MDBRow className="justify-content-center align-items-center m-5">
-        <MDBCol md="6">
-          <MDBCard>
-            <MDBCardBody className="px-4">
-              <h3 className="fw-bold mb-4 pb-2 pb-md-0 mb-md-5">
+    <Container>
+      <Grid container justifyContent="center" alignItems="center" mt={5}>
+        <Grid item xs={12} sm={8} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="h1" gutterBottom>
                 Registration Form
-              </h3>
-              <MDBRow>
-                <MDBCol md="6">
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="First Name"
-                    size="lg"
-                    id="form1"
-                    type="text"
-                  />
-                </MDBCol>
-                <MDBCol md="6">
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Last Name"
-                    size="lg"
-                    id="form2"
-                    type="text"
-                  />
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="6">
-                  <MDBInput
-                    wrapperClass="mb-4"
-                    label="Birthday"
-                    size="lg"
-                    id="form3"
-                    type="text"
-                  />
-                </MDBCol>
-                <MDBCol md="6" className="mb-4">
-                  <h6 className="fw-bold">Gender:</h6>
-                  <MDBRadio
-                    name="inlineRadio"
-                    id="inlineRadio1"
-                    value="option1"
-                    label="Female"
-                    inline
-                  />
-                  <MDBRadio
-                    name="inlineRadio"
-                    id="inlineRadio2"
-                    value="option2"
-                    label="Male"
-                    inline
-                  />
-                </MDBCol>
-              </MDBRow>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+              </Typography>
+              <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="First Name"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="Last Name"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label=""
+                      type="date"
+                      name="birthday"
+                      value={formData.birthday}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <RadioGroup name="gender" value={formData.gender} onChange={handleChange}>
+                      <FormControlLabel value="Female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                    </RadioGroup>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button variant="contained" color="primary" type="submit">
+                      Register
+                    </Button>
+                  </Grid>
+                </Grid>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
   );
-}
+};
 
 export default Register;
