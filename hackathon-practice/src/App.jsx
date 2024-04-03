@@ -1,16 +1,14 @@
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
-import Register from "./Components/Register";
-import Tutor from "./Components/Tutor";
-import Navbar from './Components/Navbar';
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/tutors" element={<Tutor />} />
-      </Routes>
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
 }
