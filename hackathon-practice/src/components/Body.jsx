@@ -1,15 +1,12 @@
-import React from 'react'
-import Register from './Register'
-import TeacherDetails from "./TeacherDetails"
+import React from "react";
+import Register from "./Register";
 
 const Body = () => {
   return (
     <div>
-
-      <TeacherDetails />
       <Register />
     </div>
-  )
-}
+  );
+};
 
-export default Body
+export default Body;

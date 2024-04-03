@@ -4,6 +4,7 @@ import "./index.css";
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import App from "./App";
 import Body from "./components/Body";
+import Tutor from "./components/Tutor";
 
 const appRouter = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const appRouter = createBrowserRouter([
       {
         path: "",
         element: <Body />
+      },
+      {
+        path: "/tutors",
+        element: <Tutor />
       }
     ]
   }
