@@ -11,9 +11,9 @@ const Navbar = () => {
             <ul className="nav-links">
                 <li onClick={() => navigate("/")}>Home</li>
                 <li onClick={() => navigate("/tutors")}>Tutors</li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Contact</li>
             </ul>
         </nav>
     );
